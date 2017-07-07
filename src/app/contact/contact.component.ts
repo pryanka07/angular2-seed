@@ -1,17 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import CustomValidators from '../forms/CustomValidators';
-// export class Details{
-// id:number;
-// title:string;
-// amount:string;
-// }
-// const :Details[]=[
-// {id:11,title:'abc',amount:2000},
-// {id:12,title:'xyz',amount:3000},
-//  {id:13,title:'mno',amount:5000}
-//  ];
-
 
 @Component({
   selector: 'app-contact',
@@ -33,13 +22,26 @@ export class ContactComponent implements OnInit {
       content: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
+
   submitForm(): void {
-    console.log(this.contactForm);
-    this.contacts.push(this.contactForm.value);
-    this.reset();
-console.log(this.contactForm.value); 
+    // console.log(this.contactForm.status); 
+    // console.log(this.contactForm);
+
+    this.contactForm.value.forEach(data => {
+      console.log(data)
+      // if (data.email.indexof(this.contactForm.value.email) > -1) {
+      //   console.log("true")
+      // } else {
+      //   console.log("false")
+      // }
+    });
+    // this.contacts.push(this.contactForm.value);
+    
+    // this.reset();
   }
+
   reset() {
     this.contactForm.reset();
   }
 }
+
